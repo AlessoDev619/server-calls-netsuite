@@ -13,6 +13,11 @@ const PORT = process.env.PORT || 3000;
 //Permite que el servidor pueda recibir peticiones con formato JSON.
 app.use(express.json());
 
+// Endpoint de salud para que Fabric valide la conexión
+app.get('/', (req, res) => {
+    res.status(200).send('API NetSuite OK');
+});
+
 //MIDDLEWARE DE SEGURIDAD 
 
 app.use((req, res, next) => {
