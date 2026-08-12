@@ -15,7 +15,7 @@ app.use(express.json());
 
 // Endpoint de salud para que Fabric valide la conexión
 app.get('/', (req, res) => {
-    res.status(200).send('API NetSuite OK');
+    res.status(200).json({ status: "ok", message: "API NetSuite activa" });
 });
 
 //MIDDLEWARE DE SEGURIDAD 
