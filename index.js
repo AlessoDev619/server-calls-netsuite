@@ -141,7 +141,7 @@ app.get('/articulos', async (req, res) => {
 });
 
 app.get('/contabilidad', async (req, res) => {
-    const { typeSearch, startDate } = req.query;
+    const { typeSearch, startDate, tranType  } = req.query;
 
     if (!startDate) {
         return res.status(400).json({ error: 'Debe ingresar una fecha inicial.' });
@@ -153,7 +153,7 @@ app.get('/contabilidad', async (req, res) => {
     }
     */
 
-    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}`;
+    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}&tranType=${tranType]`;
 
     const request_data = {
         url,
