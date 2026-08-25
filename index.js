@@ -153,7 +153,7 @@ app.get('/contabilidad', async (req, res) => {
     }
     */
 
-    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}&tranType=${tranType]`;
+    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}&tranType=${tranType}`;
 
     const request_data = {
         url,
