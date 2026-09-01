@@ -147,15 +147,20 @@ app.get('/contabilidad', async (req, res) => {
         return res.status(400).json({ error: 'Debe ingresar una fecha inicial.' });
     }
 
+    const baseUrl = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl`;
+
+    const restletUrl = new URL(baseUrl);
+    restletUrl.searchParams.set('script', '1255');
+    restletUrl.searchParams.set('deploy', '1');
+    restletUrl.searchParams.set('typeQuery', 'contabilidad');
+    restletUrl.searchParams.set('startDate', startDate);
     
-    if (tranType) {
-        const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}&tranType=${tranType}`;
+    if (tranType && tranType.trim() !== '') {
+        restletUrl.searchParams.set('tranType', tranType);
     }
-    
-    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}`;
 
     const request_data = {
-        url,
+        url: restletUrl.toString(),
         method: 'GET'
     };
 
