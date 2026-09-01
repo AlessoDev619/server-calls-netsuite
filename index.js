@@ -169,7 +169,7 @@ app.get('/contabilidad', async (req, res) => {
     headers.Authorization += `, realm="9612244"`; // Opcional pero recomendable
 
     try {
-        const response = await axios.get(url, { headers });
+        const response = await axios.get(restletUrl, { headers });
         res.json(response.data);
     } catch (error) {
         console.error('Error al conectarse a NetSuite:', error.response?.data || error.message);
