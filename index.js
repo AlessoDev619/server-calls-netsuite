@@ -147,13 +147,12 @@ app.get('/contabilidad', async (req, res) => {
         return res.status(400).json({ error: 'Debe ingresar una fecha inicial.' });
     }
 
-    /*
-    if (!typeSearch) {
-        return res.status(400).json({ error: 'El parámetro typeSearch es obligatorio' });
+    
+    if (tranType) {
+        const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}&tranType=${tranType}`;
     }
-    */
-
-    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}&tranType=${tranType}`;
+    
+    const url = `https://${process.env.ACCOUNT_ID}.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1255&deploy=1&typeQuery=contabilidad&startDate=${startDate}`;
 
     const request_data = {
         url,
